@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="400"
+   height="200"
+   viewBox="0 0 105.83333 52.916668"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="logo.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2"
+     inkscape:cx="208.82111"
+     inkscape:cy="103.4167"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1848"
+     inkscape:window-height="1016"
+     inkscape:window-x="72"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-244.0833)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:16.36948204px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.40923706"
+       x="9.5143213"
+       y="267.99133"
+       id="text817"><tspan
+         sodipodi:role="line"
+         id="tspan815"
+         x="9.5143213"
+         y="267.99133"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Nexa Bold';-inkscape-font-specification:'Nexa Bold, ';stroke-width:0.40923706"><tspan
+           style="fill:#00ff00;stroke-width:0.40923706"
+           id="tspan819">B</tspan><tspan
+           style="fill:#ffcc00;stroke-width:0.40923706"
+           id="tspan821">R</tspan></tspan></text>
+    <text
+       id="text852"
+       y="283.8663"
+       x="21.685156"
+       style="font-style:normal;font-weight:normal;font-size:16.36948204px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.40923706"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Nexa Bold';-inkscape-font-specification:'Nexa Bold, ';stroke-width:0.40923706"
+         y="283.8663"
+         x="21.685156"
+         id="tspan850"
+         sodipodi:role="line"><tspan
+           id="tspan848"
+           style="fill:#6600ff;stroke-width:0.40923706">GAMING</tspan></tspan></text>
+    <circle
+       style="fill:#6600ff;fill-opacity:1;stroke:none;stroke-width:1.43396103;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path854"
+       cx="72.231247"
+       cy="253.34372"
+       r="6.7468753" />
+    <path
+       id="circle856"
+       style="fill:#6600ff;fill-opacity:1;stroke:none;stroke-width:2.64627075;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="arc"
+       sodipodi:cx="72.628189"
+       sodipodi:cy="-271.20309"
+       sodipodi:rx="11.377045"
+       sodipodi:ry="13.626042"
+       sodipodi:start="0"
+       sodipodi:end="3.1331895"
+       sodipodi:open="true"
+       d="M 84.005234,-271.20309 A 11.377045,13.626042 0 0 1 72.67599,-257.57717 11.377045,13.626042 0 0 1 61.251546,-271.08859"
+       transform="scale(1,-1)" />
+  </g>
+</svg>
