@@ -2,7 +2,7 @@ import logo from '../assets/logo.svg'
 
 export default function Home () {
     return (
-        <div className='w-screen h-screen items-center flex flex-col'>
+        <div className='w-screen h-screen items-center flex flex-col overscroll-none'>
             <div className='flex w-full justify-center border-b border-blue-300'>
                 <h1 title="BR Gaming Users">
                     <img
@@ -12,7 +12,7 @@ export default function Home () {
                 </h1>
             </div>
 
-            <div className="w-1/2 h-1/2 flex flex-col">
+            <div className="w-full h-1/2 flex flex-col px-5 sm:w-1/2 sm:px-0">
 
                 <h2 className="text-center text-3xl text-custom-100 w-full mt-20">Entre na sua conta</h2>
 
