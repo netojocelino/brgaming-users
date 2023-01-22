@@ -1,6 +1,6 @@
 import logo from '../assets/logo.svg'
 
-export default function Home () {
+export default function () {
     return (
         <div className='w-screen h-screen items-center flex flex-col overscroll-none'>
             <div className='flex w-full justify-center border-b border-blue-300'>
@@ -44,6 +44,13 @@ export default function Home () {
                             className="w-full bg-custom-200 hover:bg-custom-300 p-2 rounded-md text-slate-50 font-semibold"
                             type="submit"
                         >Enviar</button>
+                    </div>
+
+                    <div className='w-full flex justify-center items-center'>
+                        <a
+                            className='text-custom-100 hover:text-custom-200 visited:text-custom-200 '
+                            href='#create'
+                        >Criar conta</a>
                     </div>
                 </form>
             </div>
