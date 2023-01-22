@@ -14,7 +14,11 @@ interface UserProps {
     color: string
 }
 
-export class User {
+const UserSaved: User[] = []
+
+export class User implements UserProps {
+    public readonly _id: Number
+
     constructor (
         public readonly name: string,
         public readonly phone_number: string,
@@ -22,27 +26,10 @@ export class User {
         public readonly password: string,
         public readonly role: string,
         public readonly color: string
-    ) {}
+    ) {
+        this._id = UserSaved.length + 1
+    }
 }
-
-const UserSaved: User[] = [
-    new User(
-        '[ADMIN] BR Gaming',
-        '5579999887766',
-        'admin',
-        'password123',
-        'admin',
-        '#ff00a1'
-    ),
-    new User(
-        '[SALE KEEPER] BR Gaming',
-        '5579987654321',
-        'sales',
-        'password1234',
-        'sale-keeper',
-        '#fff000'
-    ),
-]
 
 export function CheckLogin (access: LoginProps) {
     const user = UserSaved.find(
@@ -82,9 +69,30 @@ export default function (props: LoginProps) {
                 return resolve(userLogged)
             }
             return reject({
-                message: 'Invalid email or password.'
+                message: 'Usuário ou Senha inválido.'
             })
 
         })
     });
 }
+
+
+
+// Seed
+
+CreateUser({
+    name: '[ADMIN] BR Gaming',
+    phone_number: '5579999887766',
+    login: 'admin',
+    password: 'password123',
+    role: 'admin',
+    color: '#ff00a1'
+})
+CreateUser({
+    name: '[SALE KEEPER] BR Gaming',
+    phone_number: '5579987654321',
+    login: 'sales',
+    password: 'password1234',
+    role: 'sale-keeper',
+    color: '#fff000'
+})
