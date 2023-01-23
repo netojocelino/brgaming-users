@@ -81,13 +81,12 @@ export default function () {
 
             console.log(ListUsers())
 
-            
+            window.location.href = '/'
+
         } catch(er: any) {
             setErrorMessage(er.message)
         }
 
-
-        
     }
 
     return (
