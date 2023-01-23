@@ -5,6 +5,7 @@ import { IsLogged } from '../utils/ReactActions'
 
 import Input from '../components/Input'
 import GuestWizard from '../wizards/Guest'
+import { Link } from 'react-router-dom'
 
 export default function () {
     const [login, setLogin] = useState('')
@@ -89,10 +90,10 @@ export default function () {
             </div>
 
             <div className='w-full flex justify-center items-center'>
-                <a
+                <Link
                     className='text-custom-100 hover:text-custom-200 visited:text-custom-200 '
-                    href='#create'
-                >Criar conta</a>
+                    to={'/cadastrar'}
+                >Criar conta</Link>
             </div>
         </GuestWizard>
     )

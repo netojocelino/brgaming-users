@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Header from '../components/Header'
 
 import { GetRole } from '../utils/ReactActions'
@@ -26,9 +27,15 @@ export default function (props: WizardDefaultProps) {
 
                     <nav className='w-full py-20'>
                         <ul>
-                            <li className='w-full mb-5 text-custom-300 border-b-2 border-custom-100 text-center bg-clip-text bg-gradient-to-r from-black to bg-slate-500 font-semibold transition duration-100 hover:border-custom-300'><a href='#users'>Usuários</a></li>
-                            <li className='w-full mb-5 text-custom-300 border-b-2 border-custom-100 text-center bg-clip-text bg-gradient-to-r from-black to bg-slate-500 font-semibold transition duration-100 hover:border-custom-300'><a href='#store'>Minha Loja</a></li>
-                            <li className='w-full mb-5 text-custom-300 border-b-2 border-custom-100 text-center bg-clip-text bg-gradient-to-r from-black to bg-slate-500 font-semibold transition duration-100 hover:border-custom-300'><a href='#operations'>Operações</a></li>
+                            <li className='w-full mb-5 text-custom-300 border-b-2 border-custom-100 text-center bg-clip-text bg-gradient-to-r from-black to bg-slate-500 font-semibold transition duration-100 hover:border-custom-300'>
+                                <Link to={'/usuarios'}>Usuários</Link>
+                            </li>
+                            <li className='w-full mb-5 text-custom-300 border-b-2 border-custom-100 text-center bg-clip-text bg-gradient-to-r from-black to bg-slate-500 font-semibold transition duration-100 hover:border-custom-300'>
+                                <Link to={'/minha-loja'}>Minha Loja</Link>
+                            </li>
+                            <li className='w-full mb-5 text-custom-300 border-b-2 border-custom-100 text-center bg-clip-text bg-gradient-to-r from-black to bg-slate-500 font-semibold transition duration-100 hover:border-custom-300'>
+                                <Link to={'/operacoes'}>Operações</Link>
+                            </li>
                         </ul>
                     </nav>
                 </div>
