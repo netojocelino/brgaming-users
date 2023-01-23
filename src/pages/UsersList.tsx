@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { NotePencil, Recycle,  } from 'phosphor-react'
 
+import ErrorPage from '../components/ErrorPage'
+
 import { User, CheckLogin, ListUsers } from '../utils/login'
 
 import logo from '../assets/logo.svg'
@@ -33,15 +35,8 @@ export default function () {
         backgroundColor: color
     })
 
-    return user === null
-        ? ( <div
-            className='flex w-screen h-screen justify-center items-center text-center font-semibold text-custom-800 bg-custom-200'
-        >
-            <span>
-                { errorMessage ?? 'Não foi possível abrir a página' }
-            </span>
-        </div>)
-        : (
+    return (user !== null && errorMessage !== null)
+        ? (
         <div className='w-screen h-screen items-center flex flex-col overscroll-none'>
             <div className='flex w-full justify-center border-b border-blue-300'>
                 <h1 title="BR Gaming Users">
@@ -124,4 +119,5 @@ export default function () {
 
         </div>
     )
+    : ( <ErrorPage errorMessage={`${errorMessage}`} />)
 }
