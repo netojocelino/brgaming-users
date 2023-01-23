@@ -1,7 +1,6 @@
 import { expect, test } from 'vitest'
 
-import { CheckLogin, User, CreateUser } from './login'
-
+import { CheckLogin, User, CreateUser, ListUsers } from './login'
 
 test('Should be undefined when login and password not exists', async () => {
     const input = {
@@ -37,10 +36,20 @@ test('Should be undefined when password is invalid', async () => {
 })
 
 test('Should returns user when data is valid', async () => {
+    const completeData = {
+        name: 'any-fail',
+        phone_number: 'any-fail',
+        role: 'admin',
+        color: '#fff000'
+    }
     const input = {
         login: 'admin',
         password: 'password123'
     }
+    CreateUser({
+        ...completeData,
+        ...input,
+    })
 
     const user = CheckLogin(input)
 
@@ -52,14 +61,18 @@ test('Should not create an user when login already exists', async () => {
     const input = {
         login: 'admin',
         password: 'password123456',
-        name: 'any',
-        phone_number: 'any',
+        name: 'any-fail',
+        phone_number: 'any-fail',
         role: 'admin',
         color: '#fff000'
     }
 
-    expect(() => CreateUser(input))
-        .toThrow('Usuário já existe')
+    CreateUser(input)
+
+    const user = CreateUser(input)
+        
+    expect(user)
+        .toBeUndefined()
 })
 
 test('Should create an user when login not exists', async () => {
@@ -75,11 +88,30 @@ test('Should create an user when login not exists', async () => {
     const usr = CreateUser(input)
 
     expect(usr)
+        .not.toBeNull()
+    expect(usr)
         .instanceOf(User)
-    expect(usr.login)
+    expect(usr!.login)
         .toEqual(input.login)
-    expect(usr.role)
+    expect(usr!.role)
         .toEqual(input.role)
-    expect(usr.color)
+    expect(usr!.color)
         .toEqual(input.color)
+})
+
+
+test('Should create a user that not exists', () => {
+    const before = Object.keys(ListUsers()).length
+
+    const user = CreateUser({
+        color: '#aaaaaa',
+        login: 'valid123',
+        name: 'valid123',
+        password: 'valid123',
+        phone_number: '789458978',
+        role: 'admin'
+    })
+
+    expect(Object.keys(ListUsers()).length)
+        .toBeGreaterThan(before)
 })
