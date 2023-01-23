@@ -6,15 +6,12 @@ import ErrorPage from '../components/ErrorPage'
 
 import { ListUsers } from '../utils/login'
 
-import { IsAdminLogged, GetRole } from '../utils/ReactActions'
+import { CanRemove, IsAdminLogged, GetRole } from '../utils/ReactActions'
 
 export default function () {
     const [user, setUser]: [any , any] = useState(null)
     const [errorMessage, setErrorMessage]: [ string | null, any ] = useState(null)
 
-    const CanRemove = () => {
-        return user.role === 'admin'
-    }
 
     useEffect(() => {
         IsAdminLogged()
@@ -90,7 +87,7 @@ export default function () {
                                                     <NotePencil alt='Editar' />
                                                 </span>
                                             }
-                                            { CanRemove() &&
+                                            { CanRemove(user.role) &&
                                                 <span className='hover:text-custom-300 text-xl border rounded-full border-custom-700 p-2 hover:bg-slate-200'>
                                                     <Recycle alt='Remover'/>
                                                 </span>
