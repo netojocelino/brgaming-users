@@ -1,7 +1,7 @@
 import { User, CheckLogin } from '../utils/login'
 
 
-export const IsLogged = () => new Promise((resolve: any, reject: any) => {
+export const IsLogged = (): Promise<User | null> => new Promise((resolve: any, reject: any) => {
     const cachedUser = localStorage.getItem('user-logged')
 
     if (cachedUser === null) {
