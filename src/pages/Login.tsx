@@ -1,13 +1,22 @@
 import { useState } from 'react'
 
 import Login, { User } from '../utils/login'
+import { IsLogged } from '../utils/ReactActions'
 
-import logo from '../assets/logo.svg'
+import Header from '../components/Header'
 
 export default function () {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
     const [errorMessage , setErrorMessage]: [ string | null, any ] = useState(null)
+
+    IsLogged()
+        .then((user) => {
+            console.log('[TODO] redirecionar',user)
+            setErrorMessage('usuário já logado, necessário redirecionar')
+        })
+        .catch(() => ({}))
+        
 
     const handlerLogin = (event: any) => {
         const { value } = event.target
@@ -51,14 +60,7 @@ export default function () {
 
     return (
         <div className='w-screen h-screen items-center flex flex-col overscroll-none'>
-            <div className='flex w-full justify-center border-b border-blue-300'>
-                <h1 title="BR Gaming Users">
-                    <img
-                        src={logo}
-                        alt="BR Gaming Users"
-                        className='max-h-fit h-20' />
-                </h1>
-            </div>
+            <Header title='BR Gaming Users' />
 
             <div className="w-full h-1/2 flex flex-col px-5 sm:w-1/2 sm:px-0">
 
