@@ -58,6 +58,10 @@ export function CreateUser (props: UserProps) {
     return user
 }
 
+export function ListUsers () {
+    return UserSaved
+}
+
 export default function (props: LoginProps) {
     const delay = (0.4 + Math.random() * 2 ) * 1000
 
