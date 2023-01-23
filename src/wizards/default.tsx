@@ -13,6 +13,10 @@ interface WizardDefaultProps {
 }
 
 export default function (props: WizardDefaultProps) {
+    const logout = () => {
+        window.localStorage.clear()
+        window.location.href  = '/'
+    }
     const GetBackgroundColor = (color: string) => ({
         backgroundColor: color
     })
@@ -36,6 +40,13 @@ export default function (props: WizardDefaultProps) {
                             <li className='w-full mb-5 text-custom-300 border-b-2 border-custom-100 text-center bg-clip-text bg-gradient-to-r from-black to bg-slate-500 font-semibold transition duration-100 hover:border-custom-300'>
                                 <Link to={'/operacoes'}>Operações</Link>
                             </li>
+
+                            <li
+                                onClick={logout}
+                                className='w-1/6 absolute bottom-0 mb-5 text-custom-300 border-y-2 border-custom-100 text-center bg-clip-text bg-gradient-to-r from-black to bg-slate-500 font-semibold transition duration-100 hover:border-custom-300'>
+                                <span>Sair</span>
+                            </li>
+
                         </ul>
                     </nav>
                 </div>
