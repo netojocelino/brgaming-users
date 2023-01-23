@@ -6,6 +6,7 @@ import { GetRole } from '../utils/ReactActions'
 interface WizardDefaultProps {
     user: any
     errorMessage: string | undefined
+    title: string
 
     children?: any
 }
@@ -34,7 +35,7 @@ export default function (props: WizardDefaultProps) {
 
                 <div className="w-2/3 h-1/2 flex flex-col px-5 sm:w-1/2 sm:px-0">
 
-                    <h2 className="text-center text-3xl text-custom-100 w-full my-20">Usuários cadastrados</h2>
+                    <h2 className="text-center text-3xl text-custom-100 w-full my-20">{ props.title }</h2>
 
                     { props.errorMessage && <div
                         className='w-full p-2 rounded-md text-center font-semibold text-custom-800 bg-custom-200'

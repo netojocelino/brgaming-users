@@ -30,6 +30,7 @@ export default function () {
     return (user !== null && errorMessage !== null)
         ? (
             <DefaultWizard
+                title='Usuários cadastrados'
                 user={user}
                 errorMessage={errorMessage}
             >
