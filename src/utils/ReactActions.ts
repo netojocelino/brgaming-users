@@ -24,14 +24,14 @@ export const IsLogged = () => new Promise((resolve: any, reject: any) => {
 })
 
 
-export const LoggedPromise = () => new Promise((resolve: any, reject: any) => {
+export const IsAdminLogged = () => new Promise((resolve: any, reject: any) => {
     IsLogged()
         .then((isLogged: any) => {
             if (isLogged.role !== 'admin') {
                 reject({message: 'Página disponível apenas para administradores.', code: 'NOT_ALLOWED'})
                 return
             }
-        
+
             resolve(isLogged)
         })
 

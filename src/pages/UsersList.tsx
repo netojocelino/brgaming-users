@@ -4,6 +4,7 @@ import { NotePencil, Recycle,  } from 'phosphor-react'
 import { User, CheckLogin, ListUsers } from '../utils/login'
 
 import logo from '../assets/logo.svg'
+import { IsAdminLogged } from '../utils/ReactActions'
 
 export default function () {
     const [user, setUser]: [any , any] = useState(null)
@@ -19,26 +20,13 @@ export default function () {
     }
 
     useEffect(() => {
-        const cachedUser = localStorage.getItem('user-logged')
-
-        if (cachedUser === null) {
-            setErrorMessage('usuário não autenticado')
-            return
-        }
-        const userData: User = JSON.parse(cachedUser)
-
-        const isLogged = CheckLogin({
-            login: userData.login,
-            password: userData.password,
-        })
-
-        if (isLogged === undefined) {
-            localStorage.clear()
-            setErrorMessage('Usuário inválido')
-            return
-        }
-
-        setUser(userData)
+        IsAdminLogged()
+            .then((dataUser) => {
+                setUser(dataUser)
+            })
+            .catch((error) => {
+                setErrorMessage(error.message)
+            })
     }, [])
 
     const GetBackgroundColor = (color: string) => ({
