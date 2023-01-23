@@ -4,7 +4,7 @@ import Login, { User } from '../utils/login'
 import { IsLogged } from '../utils/ReactActions'
 
 import Input from '../components/Input'
-import GuestWizard from '../wizards/Gest'
+import GuestWizard from '../wizards/Guest'
 
 export default function () {
     const [login, setLogin] = useState('')
