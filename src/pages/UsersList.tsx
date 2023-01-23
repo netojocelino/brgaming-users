@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { NotePencil, Recycle,  } from 'phosphor-react'
 
+import Header from '../components/Header'
 import ErrorPage from '../components/ErrorPage'
 
 import { User, CheckLogin, ListUsers } from '../utils/login'
@@ -38,14 +39,7 @@ export default function () {
     return (user !== null && errorMessage !== null)
         ? (
         <div className='w-screen h-screen items-center flex flex-col overscroll-none'>
-            <div className='flex w-full justify-center border-b border-blue-300'>
-                <h1 title="BR Gaming Users">
-                    <img
-                        src={logo}
-                        alt="BR Gaming Users"
-                        className='max-h-fit h-20' />
-                </h1>
-            </div>
+            <Header title='BR Gaming Users' />
 
             <div className='flex flex-row w-full h-full'>
                 <div className='w-1/6 mr-10 h-full flex flex-col border-r border-blue-300' style={GetBackgroundColor(user.color)}>
