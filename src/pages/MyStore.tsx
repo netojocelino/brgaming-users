@@ -23,7 +23,7 @@ export default function () {
         backgroundColor: color
     })
 
-    return (user === null && errorMessage !== null)
+    return (user !== null && errorMessage !== null)
         ? (
         <div className='w-screen h-screen items-center flex flex-col overscroll-none'>
             <Header title='BR Gaming Users' />
