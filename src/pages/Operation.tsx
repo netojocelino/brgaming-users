@@ -3,16 +3,11 @@ import { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import ErrorPage from '../components/ErrorPage'
 
-import { IsAdminLogged } from '../utils/ReactActions'
+import { IsAdminLogged, GetRole } from '../utils/ReactActions'
 
 export default function () {
     const [user, setUser]: [any , any] = useState(null)
     const [errorMessage, setErrorMessage]: [ string | null, any ] = useState(null)
-
-    const GetRole = (_role: string) => ({
-        admin: 'Administrador',
-        'sale-keeper': 'Lojista'
-    }[_role])
 
     useEffect(() => {
         IsAdminLogged()

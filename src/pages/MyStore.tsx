@@ -3,19 +3,11 @@ import { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import ErrorPage from '../components/ErrorPage'
 
-import { User, CheckLogin } from '../utils/login'
-
-import logo from '../assets/logo.svg'
-import { IsSaleKeeperLogged } from '../utils/ReactActions'
+import { IsSaleKeeperLogged, GetRole } from '../utils/ReactActions'
 
 export default function () {
     const [user, setUser]: [any , any] = useState(null)
     const [errorMessage, setErrorMessage]: [ string | null, any ] = useState(null)
-
-    const GetRole = (_role: string) => ({
-        admin: 'Administrador',
-        'sale-keeper': 'Lojista'
-    }[_role])
 
     useEffect(() => {
         IsSaleKeeperLogged()

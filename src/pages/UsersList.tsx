@@ -4,19 +4,13 @@ import { NotePencil, Recycle,  } from 'phosphor-react'
 import Header from '../components/Header'
 import ErrorPage from '../components/ErrorPage'
 
-import { User, CheckLogin, ListUsers } from '../utils/login'
+import { ListUsers } from '../utils/login'
 
-import logo from '../assets/logo.svg'
-import { IsAdminLogged } from '../utils/ReactActions'
+import { IsAdminLogged, GetRole } from '../utils/ReactActions'
 
 export default function () {
     const [user, setUser]: [any , any] = useState(null)
     const [errorMessage, setErrorMessage]: [ string | null, any ] = useState(null)
-
-    const GetRole = (_role: string) => ({
-        admin: 'Administrador',
-        'sale-keeper': 'Lojista'
-    }[_role])
 
     const CanRemove = () => {
         return user.role === 'admin'

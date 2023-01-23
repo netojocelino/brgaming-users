@@ -48,5 +48,9 @@ export const IsSaleKeeperLogged = () => new Promise((resolve: any, reject: any) 
 
             resolve(isLogged)
         })
-
 })
+
+export const GetRole = (_role: string) => ({
+    admin: 'Administrador',
+    'sale-keeper': 'Lojista'
+}[_role])
