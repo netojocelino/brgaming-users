@@ -17,7 +17,11 @@ export default function (props: OptionsProps) {
             <label className="text-stone-600 w-1/4 font-semibold">
                 { props.label }
             </label>
-            <select className="p-1 text-md leading-6 text-slate-900 rounded ring-1 ring-custom-600 bg-[transparent] shadow-sm w-3/4">
+            <select
+                className="p-1 text-md leading-6 text-slate-900 rounded ring-1 ring-custom-600 bg-[transparent] shadow-sm w-3/4"
+                onChange={props.inputHandler}
+                value={props.inputValue}
+            >
                 <option className="text-custom-100" value="">{ props.placeholder }</option>
                 {props.items.map((option: SelectOptionItem) => (
                     <option
