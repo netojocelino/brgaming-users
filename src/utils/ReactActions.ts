@@ -37,3 +37,16 @@ export const IsAdminLogged = () => new Promise((resolve: any, reject: any) => {
 
 })
 
+
+export const IsSaleKeeperLogged = () => new Promise((resolve: any, reject: any) => {
+    IsLogged()
+        .then((isLogged: any) => {
+            if (isLogged.role !== 'sale-keeper') {
+                reject({message: 'Página disponível apenas para lojistas.', code: 'NOT_ALLOWED'})
+                return
+            }
+
+            resolve(isLogged)
+        })
+
+})
