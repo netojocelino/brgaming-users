@@ -4,6 +4,7 @@ import Login, { User } from '../utils/login'
 import { IsLogged } from '../utils/ReactActions'
 
 import Header from '../components/Header'
+import Input from '../components/Input'
 
 export default function () {
     const [login, setLogin] = useState('')
@@ -73,31 +74,21 @@ export default function () {
                 </div>}
 
                 <form className="w-full h-3/4 flex justify-center items-center flex-col space-y-5">
-                    <div className="w-full space-x-4 flex">
-                        <label className="text-stone-600 w-1/4 font-semibold">
-                            Login
-                        </label>
-                        <input
-                            value={login}
-                            onChange={handlerLogin}
-                            type="text"
-                            placeholder="Digite seu Login"
-                            className="p-1 text-sm leading-6 text-slate-900 placeholder-slate-400 rounded-md ring-1 ring-custom-600 shadow-sm w-3/4"
-                        />
-                    </div>
+                    <Input
+                        label='Login'
+                        type='text'
+                        placeholder='Digite seu login'
+                        inputValue={login}
+                        inputHandler={handlerLogin}
+                    />
 
-                    <div className="w-full space-x-4 flex">
-                        <label className="text-stone-600 w-1/4 font-semibold">
-                            Senha
-                        </label>
-                        <input
-                            value={password}
-                            onChange={handlerPassword}
-                            type="password"
-                            placeholder="Digite sua senha"
-                            className="p-1 text-sm leading-6 text-slate-900 placeholder-slate-400 rounded-md ring-1 ring-custom-600 shadow-sm w-3/4"
-                        />
-                    </div>
+                    <Input
+                        label='Senha'
+                        type='password'
+                        placeholder='Digite sua senha'
+                        inputValue={password}
+                        inputHandler={handlerPassword}
+                    />
 
                     <div className="w-full flex justify-center items-center">
                         <button
