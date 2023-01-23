@@ -34,7 +34,7 @@ export default function () {
         })
         .then((response: any) => {
             const user: User = response
-            localStorage.setItem(`${user._id}`, JSON.stringify(user))
+            localStorage.setItem('user-logged', JSON.stringify(user))
 
             if (user.role === 'admin') {
                 console.log({user})
