@@ -1,10 +1,13 @@
 import './styles/global.css'
 
-import Login from './pages/Login'
+import { RouterProvider } from 'react-router-dom'
+
+import Router from './router'
 
 function App() {
-  return (<Login />
-  )
+    return <RouterProvider
+        router={Router}
+    />
 }
 
 export default App
