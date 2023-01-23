@@ -1,7 +1,7 @@
 interface InputProps {
     label: string
     type: string
-    placeholder: string
+    placeholder?: string
     inputValue: any
     inputHandler: any 
 }
@@ -16,7 +16,7 @@ export default function (props: InputProps) {
                 value={props.inputValue}
                 onChange={props.inputHandler}
                 type={props.type}
-                placeholder={props.placeholder}
+                placeholder={props?.placeholder}
                 className="p-1 text-sm leading-6 text-slate-900 placeholder-slate-400 rounded-md ring-1 ring-custom-600 shadow-sm w-3/4"
             />
         </div>
