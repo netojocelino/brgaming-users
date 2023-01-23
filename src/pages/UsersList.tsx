@@ -10,7 +10,7 @@ import { CanRemove, IsAdminLogged, GetRole } from '../utils/ReactActions'
 
 export default function () {
     const [user, setUser]: [any , any] = useState(null)
-    const [errorMessage, setErrorMessage]: [ string | null, any ] = useState(null)
+    const [errorMessage, setErrorMessage]: [ string | undefined, any ] = useState(undefined)
 
 
     useEffect(() => {
@@ -104,5 +104,5 @@ export default function () {
 
         </div>
     )
-    : ( <ErrorPage errorMessage={`${errorMessage}`} />)
+    : ( <ErrorPage errorMessage={errorMessage} />)
 }

@@ -1,5 +1,5 @@
 interface ErrorPageProps {
-    errorMessage: string
+    errorMessage: string | undefined
 }
 
 export default function (props: ErrorPageProps) {
