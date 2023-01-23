@@ -22,7 +22,7 @@ export default function (props: WizardGuestProps) {
                     { props.errorMessage }
                 </div>}
 
-                <form className="w-full h-3/4 flex justify-center items-center flex-col space-y-5">
+                <form className="w-full h-3/4 flex justify-center items-center flex-col space-y-5 mt-5">
                     { props.children }
                 </form>
             </div>
