@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import Login, { User } from '../utils/login'
 import { IsLogged } from '../utils/ReactActions'
@@ -12,12 +12,16 @@ export default function () {
     const [password, setPassword] = useState('')
     const [errorMessage , setErrorMessage]: [ string | undefined, any ] = useState(undefined)
 
-    IsLogged()
-        .then((user) => {
-            console.log('[TODO] redirecionar',user)
-            setErrorMessage('usuário já logado, necessário redirecionar')
-        })
-        .catch(() => ({}))
+    useEffect(() => {
+        IsLogged()
+            .then((_user) => {
+                setErrorMessage('usuário já logado, estamos te redirecionando para a lista de usuários.')
+                return setTimeout(() => {
+                    window.location.href = '/usuarios'
+                }, 1000)
+            })
+            .catch(() => ({}))
+    }, [])
         
 
     const handlerLogin = (event: any) => {
@@ -39,19 +43,12 @@ export default function () {
             return
         }
 
-        Login({
-            login,
-            password
-        })
+        Login({ login, password })
         .then((response: any) => {
             const user: User = response
             localStorage.setItem('user-logged', JSON.stringify(user))
 
-            if (user.role === 'admin') {
-                console.log({user})
-            } else {
-                console.warn({user})
-            }
+            window.location.href = '/usuarios'
         })
         .catch(err => {
             localStorage.clear()
