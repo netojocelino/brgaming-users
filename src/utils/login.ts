@@ -14,10 +14,9 @@ interface UserProps {
     color: string
 }
 
-const UserSaved: User[] = []
 
 export class User implements UserProps {
-    public readonly _id: Number
+    public readonly _id: string
 
     constructor (
         public readonly name: string,
@@ -27,21 +26,62 @@ export class User implements UserProps {
         public readonly role: string,
         public readonly color: string
     ) {
-        this._id = UserSaved.length + 1
+        this._id = login
     }
 }
 
-export function CheckLogin (access: LoginProps) {
-    const user = UserSaved.find(
-        (current) => current.login === access.login && current.password === access.password
-    )
-    return user
+
+function LoadUsersFromLocal() {
+    const users = window.localStorage.getItem('list-users')
+
+    if (users === null) {
+        const newUsers = SeedUsers()
+        window.localStorage.setItem('list-users', JSON.stringify(newUsers))
+        return newUsers
+    }
+    
+    return JSON.parse(users)   
 }
 
-export function CreateUser (props: UserProps) {
-    const alreadyExists = UserSaved.findIndex((user) => user.login === props.login) !== -1
+function UpdateUsersFromLocal(user: User) {
+    const cached = window.localStorage.getItem('list-users') ?? '{}'
+    const users: any = JSON.parse(cached)  
+
+    const exists = users[`${user._id}`] !== undefined
+
+    if (!exists) {
+        users[user._id] = user
+        window.localStorage.setItem('list-users', JSON.stringify(users)) 
+    }
+
+    return users
+}
+
+export function CheckLogin (access: LoginProps) : User | undefined {
+    const user = LoadUsersFromLocal()[access.login]
+
+    if (user !== undefined && user.password === access.password) {
+        const _user = new User(
+            user.name,
+            user.phone_number,
+            user.login,
+            user.password,
+            user.role,
+            user.color
+        )
+        
+        
+        return _user
+    }
+    return undefined
+}
+
+export function CreateUser (props: UserProps) : User | undefined{
+    LoadUsersFromLocal()
+    const alreadyExists = LoadUsersFromLocal()[props.login] !== undefined
+
     if (alreadyExists) {
-        throw new Error('Usuário já existe')
+        return undefined
     }
 
     const user = new User(
@@ -53,13 +93,13 @@ export function CreateUser (props: UserProps) {
         props.color
     )
 
-    UserSaved.push(user)
+    UpdateUsersFromLocal(user)
 
     return user
 }
 
 export function ListUsers () {
-    return UserSaved
+    return LoadUsersFromLocal()
 }
 
 export default function (props: LoginProps) {
@@ -83,20 +123,24 @@ export default function (props: LoginProps) {
 
 
 // Seed
+function SeedUsers () {
+    return {
+        'admin': new User(
+            '[ADMIN] BR Gaming',
+            '5579999887766',
+            'admin',
+            'password123',
+            'admin',
+            '#ff00a1'
+        ),
+        'sales': new User(
+            '[SALE KEEPER] BR Gaming',
+            '5579987654321',
+            'sales',
+            'password1234',
+            'sale-keeper',
+            '#fff000'
+        )
+    }
+}
 
-CreateUser({
-    name: '[ADMIN] BR Gaming',
-    phone_number: '5579999887766',
-    login: 'admin',
-    password: 'password123',
-    role: 'admin',
-    color: '#ff00a1'
-})
-CreateUser({
-    name: '[SALE KEEPER] BR Gaming',
-    phone_number: '5579987654321',
-    login: 'sales',
-    password: 'password1234',
-    role: 'sale-keeper',
-    color: '#fff000'
-})
