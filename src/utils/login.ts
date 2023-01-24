@@ -133,6 +133,16 @@ export function UpdateUser (id: string, props: UserProps) : User | undefined{
     return user
 }
 
+export function DeleteUser (id: string) {
+    const users = LoadUsersFromLocal()
+    users[`${id}`] = undefined
+    delete users[`${id}`]
+
+    window.localStorage.setItem('list-users', JSON.stringify(users))
+
+    window.location.reload()
+}
+
 export function ListUsers () {
     return LoadUsersFromLocal()
 }

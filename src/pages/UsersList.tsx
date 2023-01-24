@@ -4,7 +4,7 @@ import { NotePencil, Recycle,  } from 'phosphor-react'
 import ErrorPage from '../components/ErrorPage'
 import DefaultWizard from '../wizards/default'
 
-import { ListUsers } from '../utils/login'
+import { ListUsers, DeleteUser } from '../utils/login'
 
 import { CanRemove, CanEdit, IsLogged, GetRole } from '../utils/ReactActions'
 import { Link } from 'react-router-dom'
@@ -24,9 +24,14 @@ export default function () {
             })
     }, [])
 
-    const GetBackgroundColor = (color: string) => ({
-        backgroundColor: color
-    })
+    const RemoveUser = (id: string) => {
+        if (!CanRemove(user.role)) {
+            setErrorMessage('Não é possível remover usuário, permissão de administrador necessária.')
+            return
+        }
+
+        DeleteUser(id)
+    }
 
     return (user !== null && errorMessage !== null)
         ? (
@@ -72,7 +77,7 @@ export default function () {
                                                 </span>
                                             }
                                             { CanRemove(user.role) &&
-                                                <span className='hover:text-custom-300 text-xl border rounded-full border-custom-700 p-2 hover:bg-slate-200'>
+                                                <span onClick={() => RemoveUser(userIteration._id)} className='hover:text-custom-300 text-xl border rounded-full border-custom-700 p-2 hover:bg-slate-200'>
                                                     <Recycle alt='Remover'/>
                                                 </span>
                                             }
