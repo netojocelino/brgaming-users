@@ -57,6 +57,20 @@ function UpdateUsersFromLocal(user: User) {
     return users
 }
 
+function ReplaceUsersFromLocal(user: User) {
+    const cached = window.localStorage.getItem('list-users') ?? '{}'
+    const users: any = JSON.parse(cached)  
+
+    const exists = users[`${user._id}`] !== undefined
+
+    if (exists) {
+        users[user._id] = user
+        window.localStorage.setItem('list-users', JSON.stringify(users)) 
+    }
+
+    return users
+}
+
 export function CheckLogin (access: LoginProps) : User | undefined {
     const user = LoadUsersFromLocal()[access.login]
 
@@ -94,6 +108,27 @@ export function CreateUser (props: UserProps) : User | undefined{
     )
 
     UpdateUsersFromLocal(user)
+
+    return user
+}
+
+export function UpdateUser (id: string, props: UserProps) : User | undefined{
+    LoadUsersFromLocal()
+    const user = LoadUsersFromLocal()[props.login]
+
+    if (user === undefined ) {
+        return undefined
+    }
+
+    ReplaceUsersFromLocal({
+        _id: id,
+        name: props.name,
+        login: id,
+        password: props.password,
+        phone_number: props.phone_number,
+        color: props.color,
+        role: props.role,
+    })
 
     return user
 }
