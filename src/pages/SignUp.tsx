@@ -70,7 +70,7 @@ export default function () {
         }
 
         try {
-            CreateUser({
+            const created = CreateUser({
                 name: user.name,
                 phone_number: user.phone_number,
                 login: user.login,
@@ -79,7 +79,9 @@ export default function () {
                 color: user.color,
             })
 
-            console.log(ListUsers())
+            if (created === null) {
+                throw new Error('Usuário não pôde ser cadastado, login já existe.')
+            }
 
             window.location.href = '/'
 
