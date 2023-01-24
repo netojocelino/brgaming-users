@@ -51,7 +51,7 @@ export default function () {
             window.location.href = '/usuarios'
         })
         .catch(err => {
-            localStorage.clear()
+            localStorage.removeItem('user-logged')
             setErrorMessage(err.message)
         })
         

@@ -15,7 +15,7 @@ export const IsLogged = (): Promise<User | null> => new Promise((resolve: any, r
     })
 
     if (isLogged === undefined) {
-        localStorage.clear()
+        localStorage.removeItem('user-logged')
         reject({message: 'Usuário inválido', code: 'INVALID'})
         return
     }
