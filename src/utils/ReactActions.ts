@@ -58,3 +58,7 @@ export const GetRole = (_role: string) => ({
 export const CanRemove = (_role: String) => {
     return _role === 'admin'
 }
+
+export const CanEdit = (_role: String) => {
+    return _role === 'admin'
+}
