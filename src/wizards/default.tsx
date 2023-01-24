@@ -14,7 +14,7 @@ interface WizardDefaultProps {
 
 export default function (props: WizardDefaultProps) {
     const logout = () => {
-        window.localStorage.clear()
+        window.localStorage.removeItem('user-logged')
         window.location.href  = '/'
     }
     const GetBackgroundColor = (color: string) => ({
@@ -33,6 +33,9 @@ export default function (props: WizardDefaultProps) {
                         <ul>
                             <li className='w-full mb-5 text-custom-300 border-b-2 border-custom-100 text-center bg-clip-text bg-gradient-to-r from-black to bg-slate-500 font-semibold transition duration-100 hover:border-custom-300'>
                                 <Link to={'/usuarios'}>Usuários</Link>
+                            </li>
+                            <li className='w-full mb-5 text-custom-300 border-b-2 border-custom-100 text-center bg-clip-text bg-gradient-to-r from-black to bg-slate-500 font-semibold transition duration-100 hover:border-custom-300'>
+                                <Link to={'/cadastrar'}>Adicionar Usuário</Link>
                             </li>
                             <li className='w-full mb-5 text-custom-300 border-b-2 border-custom-100 text-center bg-clip-text bg-gradient-to-r from-black to bg-slate-500 font-semibold transition duration-100 hover:border-custom-300'>
                                 <Link to={'/minha-loja'}>Minha Loja</Link>
