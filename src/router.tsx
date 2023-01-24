@@ -7,14 +7,9 @@ import SignUp from './pages/SignUp'
 import UsersList from './pages/UsersList'
 import MyStore from './pages/MyStore'
 import Operation from './pages/Operation'
-
-
+import Edit from './pages/Edit'
 
 export default createBrowserRouter([
-    {
-        path: '/',
-        element: <Login />
-    },
     {
         path: '/cadastrar',
         element: <SignUp />,
@@ -30,5 +25,13 @@ export default createBrowserRouter([
     {
         path: '/operacoes',
         element: <Operation />,
+    },
+    {
+        path: '/usuario/editar/:user_id',
+        element: <Edit />
+    },
+    {
+        path: '/',
+        element: <Login />
     },
 ])
