@@ -6,7 +6,8 @@ import DefaultWizard from '../wizards/default'
 
 import { ListUsers } from '../utils/login'
 
-import { CanRemove, IsLogged, GetRole } from '../utils/ReactActions'
+import { CanRemove, CanEdit, IsLogged, GetRole } from '../utils/ReactActions'
+import { Link } from 'react-router-dom'
 
 export default function () {
     const [user, setUser]: [any , any] = useState(null)
@@ -63,9 +64,11 @@ export default function () {
                                             <input type="color" value={userIteration.color} disabled />
                                         </th>
                                         <th className='text-right font-normal text-custom-200 cursor-pointer flex flex-row justify-around' scope='row'>
-                                            { false &&
+                                            { CanEdit(user.role) &&
                                                 <span className='hover:text-custom-300 text-xl border rounded-full border-custom-700 p-2 hover:bg-slate-200'>
-                                                    <NotePencil alt='Editar' />
+                                                    <Link to={`/usuario/editar/${userIteration._id}`}>
+                                                        <NotePencil alt='Editar' />
+                                                    </Link>
                                                 </span>
                                             }
                                             { CanRemove(user.role) &&
