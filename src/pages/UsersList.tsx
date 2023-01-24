@@ -6,7 +6,7 @@ import DefaultWizard from '../wizards/default'
 
 import { ListUsers } from '../utils/login'
 
-import { CanRemove, IsAdminLogged, GetRole } from '../utils/ReactActions'
+import { CanRemove, IsLogged, GetRole } from '../utils/ReactActions'
 
 export default function () {
     const [user, setUser]: [any , any] = useState(null)
@@ -14,7 +14,7 @@ export default function () {
 
 
     useEffect(() => {
-        IsAdminLogged()
+        IsLogged()
             .then((dataUser) => {
                 setUser(dataUser)
             })
@@ -49,31 +49,34 @@ export default function () {
 
                     <tbody className='bg-white dark:bg-slate-800'>
                         {
-                            ListUsers()
-                            .map((userIteration) => (
-                                <tr role='row' key={userIteration._id.toString()}>
-                                    <th scope='row'>{ userIteration._id.toString() }</th>
-                                    <th className='text-left' scope='row'>{ userIteration.name }</th>
-                                    <th className='text-left font-normal' scope='row'>{ userIteration.login }</th>
-                                    <th className='text-left font-normal' scope='row'>{ userIteration.phone_number }</th>
-                                    <th className='text-left font-normal' scope='row'>{ GetRole(userIteration.role) }</th>
-                                    <th className='text-left font-normal' scope='row'>
-                                        <input type="color" value={userIteration.color} disabled />
-                                    </th>
-                                    <th className='text-right font-normal text-custom-200 cursor-pointer flex flex-row justify-around' scope='row'>
-                                        { false &&
-                                            <span className='hover:text-custom-300 text-xl border rounded-full border-custom-700 p-2 hover:bg-slate-200'>
-                                                <NotePencil alt='Editar' />
-                                            </span>
-                                        }
-                                        { CanRemove(user.role) &&
-                                            <span className='hover:text-custom-300 text-xl border rounded-full border-custom-700 p-2 hover:bg-slate-200'>
-                                                <Recycle alt='Remover'/>
-                                            </span>
-                                        }
-                                    </th>
-                                </tr>
-                            ))
+                            Object.keys(ListUsers())
+                            .map((userId: string) => {
+                                const userIteration = ListUsers()[userId]
+                                
+                                return (<tr role='row' key={userIteration._id}>
+                                        <th scope='row'>{ userIteration._id }</th>
+                                        <th className='text-left' scope='row'>{ userIteration.name }</th>
+                                        <th className='text-left font-normal' scope='row'>{ userIteration.login }</th>
+                                        <th className='text-left font-normal' scope='row'>{ userIteration.phone_number }</th>
+                                        <th className='text-left font-normal' scope='row'>{ GetRole(userIteration.role) }</th>
+                                        <th className='text-left font-normal' scope='row'>
+                                            <input type="color" value={userIteration.color} disabled />
+                                        </th>
+                                        <th className='text-right font-normal text-custom-200 cursor-pointer flex flex-row justify-around' scope='row'>
+                                            { false &&
+                                                <span className='hover:text-custom-300 text-xl border rounded-full border-custom-700 p-2 hover:bg-slate-200'>
+                                                    <NotePencil alt='Editar' />
+                                                </span>
+                                            }
+                                            { CanRemove(user.role) &&
+                                                <span className='hover:text-custom-300 text-xl border rounded-full border-custom-700 p-2 hover:bg-slate-200'>
+                                                    <Recycle alt='Remover'/>
+                                                </span>
+                                            }
+                                        </th>
+                                    </tr>
+                                )}
+                            )
 
                         }
                     </tbody>
